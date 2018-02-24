@@ -1,0 +1,94 @@
+.TH FLOW_METER "1" "February 2018" "2.6.1 flow_meter" "User Commands"
+.SH NAME
+flow_meter \- manual page for flow_meter 2.6.1
+.SH SYNOPSIS
+.B flow_meter
+[\fICOMMON\fR]... [\fIOPTIONS\fR]...
+.SH DESCRIPTION
+.TP
+Number of Input IFC: \fB0\fR
+..
+.TP
+Number of Output IFC: \fBvariable\fR
+..
+.TP
+Convert packets from PCAP file or network interface into flow records.
+.HP
+\fB\-u\fR, \fB\-\-udp\fR
+Use UDP when exporting to IPFIX collector.
+.TP
+\fB\-O\fR, \fB\-\-odid\fR
+Send ODID field instead of LINK_BIT_FIELD in unirec message.
+.TP
+\fB\-P\fR, \fB\-\-pcap-statistics\fR
+Print pcap statistics every 5 seconds. The statistics do not behave the same way on all platforms.
+.TP
+\fB\-x\fR, \fB\-\-ipfix\fR
+Export to IPFIX collector. Format: HOST:PORT or [HOST]:PORT
+.TP
+\fB\-D\fR, \fB\-\-dir_bit_field\fR
+Direction bit field value.
+.TP
+\fB\-l\fR, \fB\-\-snapshot_len\fR
+Snapshot length when reading packets. Set value between 120-65535.
+.TP
+\fB\-F\fR, \fB\-\-filter\fR
+String containing filter expression to filter traffic. See man pcap-filter.
+.TP
+\fB\-S\fR, \fB\-\-cache-statistics\fR
+Print flow cache statistics. NUMBER specifies interval between prints.
+.TP
+\fB\-n\fR, \fB\-\-no_eof\fR
+Don't send NULL record message when flow_meter exits.
+.TP
+\fB\-I\fR, \fB\-\-interface\fR
+Capture from given network interface. Parameter require interface name (eth0 for example).
+.TP
+\fB\-c\fR, \fB\-\-count\fR
+Quit after number of packets are captured.
+.TP
+\fB\-p\fR, \fB\-\-plugins\fR
+Activate specified parsing plugins. Output interface for each plugin correspond the order which you specify items in -i and -p param. \
+.TP
+\fB\-r\fR, \fB\-\-file\fR
+Pcap file to read. - to read from stdin.
+.TP
+\fB\-L\fR, \fB\-\-link_bit_field\fR
+Link bit field value.
+.TP
+\fB\-s\fR, \fB\-\-cache_size\fR
+Size of flow cache. Parameter is used as an exponent to the power of two. Valid numbers are in range 4-30. default is 17 (131072 records).
+.TP
+\fB\-t\fR, \fB\-\-timeout\fR
+Active and inactive timeout in seconds. Format: DOUBLE:DOUBLE. Value default means use default value 300.0:30.0.
+.TP
+.SH COMMON OPTIONS:
+.TP
+\fB\-h\fR \fB[trap,1]\fR
+If no argument, print this message. If \fItrap\fR or 1 is given, print TRAP help.
+.TP
+\fB\-i\fR \fBIFC_SPEC\fR
+Specification of interface types and their parameters, see \fI\-h trap\fR (mandatory parameter).
+.TP
+\fB\-v\fR
+Be verbose.
+.TP
+\fB\-vv\fR
+Be more verbose.
+.TP
+\fB\-vvv\fR
+Be even more verbose.
+.SH ENVIRONMENT VARIABLES
+.TP
+\fBPAGER\fR
+Show the help output in the set \fBPAGER\fR.
+.TP
+\fBLIBTRAP_OUTPUT_FORMAT\fR
+If set to \fIjson\fR, information about module is printed in JSON format.
+.TP
+\fBTRAP_SOCKET_DIR\fR
+Redefines directory for UNIX sockets.
+.SH BUGS
+Please send problems, bugs, questions, desirable enhancements, patches etc. to:
+\fInemea@cesnet.cz\fR
+
